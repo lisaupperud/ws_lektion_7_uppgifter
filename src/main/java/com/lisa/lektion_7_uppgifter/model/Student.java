@@ -1,20 +1,25 @@
 package com.lisa.lektion_7_uppgifter.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "Students")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Column(nullable = false)
+    @NotNull(message = "First name can't be null")
     private String firstName;
 
     @Column(nullable = false)
+    @NotNull(message = "Last name can't be null")
     private String lastName;
 
     @Column(nullable = false, unique = true)
+    @NotNull(message = "Email can't be null")
     private String email;
 
     public Student(){
@@ -27,11 +32,11 @@ public class Student {
         this.email = email;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
